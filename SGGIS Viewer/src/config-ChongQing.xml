@@ -1,6 +1,16 @@
 <?xml version="1.0" ?>
 <configuration>
+	<style>
+		<!--textColor,backgroundColor,rolloverColor,selectionColor,titleColor -->
+		<colors>0x000000,0xFFFFFF,0xDDDDDD,0x3E6FBC,0x3E6FBC</colors>
+		<navigationcolors>0xFFFFFF,0x3E6FBC,0xDDDDDD,0x3E6FBC,0xFFFFFF</navigationcolors>
+		<alpha>0.8</alpha>
+		<font name="微软雅黑" size="14" />
+	</style>
+	
 	<serverip>192.168.1.206:7010</serverip>
+	<username>111</username>
+	<password>222</password>
 	<services>
 		<baseservice>http://{serverip}/sggis/services/BaseService?wsdl</baseservice>
 		<mapservice>http://{serverip}/sggis/ services/MapService?wsdl</mapservice>
@@ -11,4 +21,8 @@
 		<topoanalysisservice>http://{serverip}/sggis/ services/TopoAnalysisService?wsdl</topoanalysisservice>
 		<tilemapservice>http://{serverip}/sggis/ services/TileMapService?wsdl</tilemapservice>
 	</services>
+	
+	<widgetcontainer layout="float">
+		<widget preload="open" url="widgets/Samples/HelloWorldWidget.swf"/>
+	</widgetcontainer>
 </configuration>

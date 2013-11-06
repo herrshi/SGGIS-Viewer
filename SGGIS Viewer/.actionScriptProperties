@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <actionScriptProperties analytics="false" mainApplicationPath="SGGISViewer.mxml" projectUUID="1387cd82-144f-435e-aa5e-4631dd36a889" version="11">
-  <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="false" verifyDigests="true" warn="true">
+  <compiler additionalCompilerArguments="-source-path=locale/{locale} -keep-all-type-selectors=true" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="false" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
       <libraryPathEntry kind="4" path="">
@@ -16,7 +16,10 @@
   <applications>
     <application path="SGGISViewer.mxml"/>
   </applications>
-  <modules/>
+  <modules>
+    <module application="src/SGGISViewer.mxml" destPath="widgets/WidgetContainer/WidgetContainerWidget.swf" optimize="true" sourcePath="src/widgets/WidgetContainer/WidgetContainerWidget.mxml"/>
+    <module application="src/SGGISViewer.mxml" destPath="widgets/Samples/HelloWorldWidget.swf" optimize="true" sourcePath="src/widgets/Samples/HelloWorldWidget.mxml"/>
+  </modules>
   <workers/>
   <buildCSSFiles/>
   <flashCatalyst validateFlashCatalystCompatibility="false"/>

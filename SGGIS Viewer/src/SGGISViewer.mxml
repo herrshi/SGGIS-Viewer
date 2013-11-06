@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
-				xmlns:SGGISViewer="cn.seisys.SGGISViewer.*" 
-				xmlns:managers="cn.seisys.SGGISViewer.managers.*" 
-				xmlns:s="library://ns.adobe.com/flex/spark">
+<s:Application 
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:SGGISViewer="cn.seisys.SGGISViewer.*" 
+	xmlns:managers="cn.seisys.SGGISViewer.managers.*" >
+	
+	<fx:Style source="defaults.css"/>
+	
+	<fx:Metadata>
+		[ResourceBundle("ViewerStrings")]
+	</fx:Metadata>
 	
 	<SGGISViewer:ViewerContainer id="viewerContainer">
 		<SGGISViewer:configManager>
 			<managers:ConfigManager id="configManager"/>
 		</SGGISViewer:configManager>
 		
-		<!--<SGGISViewer:mapManager>
+		<SGGISViewer:mapManager>
 			<managers:MapManager id="mapManager"/>
-		</SGGISViewer:mapManager>-->
+		</SGGISViewer:mapManager>
+		
+		<SGGISViewer:uiManager>
+			<managers:UIManager id="uiManager"/>
+		</SGGISViewer:uiManager>
+		
+		<SGGISViewer:widgetManager>
+			<managers:WidgetManager id="widgetManager"/>
+		</SGGISViewer:widgetManager>
 	</SGGISViewer:ViewerContainer>
 </s:Application>

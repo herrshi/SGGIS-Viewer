@@ -31,6 +31,96 @@ package cn.seisys.SGGISViewer
 		 */
 		public static const CONFIG_LOADED:String = "configLoaded";
 		
+		/**
+		 * For widget chain and data manager to manage the session generated data.
+		 */
+		public static const DATA_PUBLISH:String = "dataPublishing";
+		
+		/**
+		 * For widget chain. TBD
+		 */
+		public static const DATA_NEW_PUBLISHED:String = "dataPublished";
+		
+		/**
+		 * for widget chain. TBD
+		 */
+		public static const DATA_FETCH_ALL:String = "dataFetchAll";
+		
+		public static const DATA_FETCH:String = "dataFetch";
+		
+		public static const DATA_SENT:String = "dataFetched";
+		
+		public static const DATA_OPT_LAYERS:String = "dataOperationalLayers";
+		
+		public static const DATA_CREATE_INFOWIDGET:String = "createInfoWidget";
+		
+		/**
+		 * This event type is used by the Controller to indicate a widget run request
+		 */
+		public static const WIDGET_RUN:String = "widgetRunRequested";
+		
+		/**
+		 * used to send message to widget to change its state such as close, min and max
+		 * var data:Object {
+		 *    id: widgetId, //as Number
+		 *    state: stateString //as String
+		 * }
+		 * AppEvent.publish(AppEvent.WIDGET_CHANGE_STATE, data);
+		 */
+		public static const WIDGET_CHANGE_STATE:String = "widgetChangeState";
+		
+		public static const WIDGET_STATE_CHANGED:String = "widgetStateChanged";
+		
+		/**
+		 * for widget layout
+		 */
+		public static const WIDGET_FOCUS:String = "focusWidget";
+		
+		public static const WIDGET_CHAIN_NEXT:String = "widgetChainNextRequested";
+		
+		public static const WIDGET_CHAIN_START:String = "widgetChainStartRequested"
+		
+		public static const WIDGET_MGR_RESIZE:String = "widgetManagerResize";
+		
+		public static const WIDGET_ADD:String = "addWidget";
+		
+		public static const WIDGET_ADDED:String = "widgetAdded";
+		
+		public static const WIDGET_CLOSE:String = "closeWidget";
+		
+		public static const INFOWIDGET_REQUEST:String = "requestInfoWidget";
+		
+		public static const INFOWIDGET_READY:String = "infoWidgetReady";
+		
+		/**
+		 * Builder events.
+		 */
+		public static const SET_TITLES:String = 'setTitles';
+		
+		public static const SET_LOGO:String = 'setLogo';
+		
+		public static const SET_TITLE_COLOR:String = 'setTitleColor';
+		
+		public static const SET_TEXT_COLOR:String = 'setTextColor';
+		
+		public static const SET_BACKGROUND_COLOR:String = 'setBackgroundColor';
+		
+		public static const SET_ROLLOVER_COLOR:String = 'setRolloverColor';
+		
+		public static const SET_SELECTION_COLOR:String = 'setSelectionColor';
+		
+		public static const SET_APPLICATION_BACKGROUND_COLOR:String = 'setApplicationBackgroundColor';
+		
+		public static const SET_ALPHA:String = 'setAlpha';
+		
+		public static const SET_FONT_NAME:String = 'setFontName';
+		
+		public static const SET_APP_TITLE_FONT_NAME:String = 'setAppTitleFontName';
+		
+		public static const SET_SUB_TITLE_FONT_NAME:String = 'setSubTitleFontName';
+		
+		public static const SET_PREDEFINED_STYLES:String = 'setPredefinedStyles';
+		
 		
 		public function AppEvent(type:String, data:Object = null, callback:Function = null)
 		{

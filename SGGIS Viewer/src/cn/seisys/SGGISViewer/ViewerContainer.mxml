@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" 
-		 width="100%" height="100%" 
-		 creationComplete="creationCompleteHandler(event)" 
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%" creationComplete="creationCompleteHandler(event)"
 		 initialize="initializeHandler(event)">
 	<fx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import mx.core.FlexGlobals;
 			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
 			
+			import cn.seisys.SGGISViewer.components.ErrorWindow;
 			import cn.seisys.SGGISViewer.managers.ConfigManager;
 			import cn.seisys.SGGISViewer.managers.MapManager;
+			import cn.seisys.SGGISViewer.managers.UIManager;
+			import cn.seisys.SGGISViewer.managers.WidgetManager;
+			import cn.seisys.SGGISViewer.utils.LocalizationUtil;
+			
+			
 			
 			private static var m_instance:ViewerContainer;
 			
 			public static const DEFAULT_CONFIG_FILE:String = "config.xml";
 			
+			public static const DEFAULT_WIDGET_CONTAINER_WIDGET:String = "widgets/WidgetContainer/WidgetContainerWidget.swf";
+			
+			public static const DEFAULT_WIDGET_LAYOUT:String = "horizontal";
+			
+			public static const DEFAULT_WIDGET_ICON:String = "assets/images/i_widget.png";
+			
+			public static const DEFAULT_WIDGET_GROUP_ICON:String = "assets/images/i_folder.png";
+			
 			public static const CONTAINER_INITIALIZED:String = "containerInitilized";
+			
+			public static const NAVIGATION_ZOOM_FULL:String = "zoomfull";
+			
+			public static const NAVIGATION_ZOOM_PREVIOUS:String = "zoomprevious";
+			
+			public static const NAVIGATION_ZOOM_NEXT:String = "zoomnext";
+			
+			private static const VIEWER_CONTAINER:String = "ViewerContainer";
 			
 			public static var configFile:String = ViewerContainer.DEFAULT_CONFIG_FILE;
 			
@@ -27,14 +50,21 @@
 			
 			public var mapManager:MapManager;
 			
+			public var widgetManager:WidgetManager;
+			
+			public var uiManager:UIManager;
+			
 			public static function getInstance():ViewerContainer
 			{
 				return m_instance;
 			}
 			
-			protected function creationCompleteHandler(event:FlexEvent):void
+			private function creationCompleteHandler(event:FlexEvent):void
 			{
 				m_instance = this;
+				
+				AppEvent.addListener(AppEvent.APP_ERROR, errorHandler);
+				
 				setConfigFile();
 				
 				AppEvent.addListener(AppEvent.CONFIG_LOADED, configLoadedHandler);
@@ -42,9 +72,12 @@
 				AppEvent.dispatch(ViewerContainer.CONTAINER_INITIALIZED);
 			}
 			
-			protected function initializeHandler(event:FlexEvent):void
+			private function initializeHandler(event:FlexEvent):void
 			{
-				// TODO Auto-generated method stub
+				Alert.yesLabel = LocalizationUtil.getDefaultString('yesLabel');
+				Alert.noLabel = LocalizationUtil.getDefaultString('noLabel');
+				Alert.okLabel = LocalizationUtil.getDefaultString('okLabel');
+				Alert.cancelLabel = LocalizationUtil.getDefaultString('cancelLabel');
 				
 			}
 			
@@ -67,6 +100,37 @@
 			private function configLoadedHandler(event:AppEvent):void
 			{
 				
+			}
+			
+			//to make sure the the children are visible.
+			private var isAddChild:Boolean = true;
+			
+			protected override function commitProperties():void
+			{
+				super.commitProperties();
+				
+				if (isAddChild)
+				{
+					widgetManager.mapManager = this.mapManager;
+					addElement(widgetManager);
+					
+					isAddChild = false;
+				}
+			}
+			
+			private function errorHandler(event:AppEvent):void
+			{
+				var errorWindow:ErrorWindow = ErrorWindow(PopUpManager.createPopUp(this, ErrorWindow, true));
+				var errorMessage:ErrorMessage = event.data as ErrorMessage;
+				if (errorMessage)
+				{
+					errorWindow.title = errorMessage.title;
+					errorWindow.errorMessage = errorMessage.content;
+				}
+				else
+				{
+					errorWindow.errorMessage = event.data as String;
+				}
 			}
 			
 		]]>
