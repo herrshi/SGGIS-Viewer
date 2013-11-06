@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<configuration>
+	<serverip>192.168.1.206:7010</serverip>
+	<services>
+		<baseservice>http://{serverip}/sggis/services/BaseService?wsdl</baseservice>
+		<mapservice>http://{serverip}/sggis/ services/MapService?wsdl</mapservice>
+		<queryservice>http://{serverip}/sggis/ services/QueryService?wsdl</queryservice>
+		<featureservice>http://{serverip}/sggis/ services/FeatureService?wsdl</featureservice>
+		<thematicmapservice>http://{serverip}/sggis/ services/ThematicMapService?wsdl</thematicmapservice>
+		<spatialanalysisservice>http://{serverip}/sggis/ services/SpatialAnalysisService?wsdl</spatialanalysisservice>
+		<topoanalysisservice>http://{serverip}/sggis/ services/TopoAnalysisService?wsdl</topoanalysisservice>
+		<tilemapservice>http://{serverip}/sggis/ services/TileMapService?wsdl</tilemapservice>
+	</services>
+</configuration>

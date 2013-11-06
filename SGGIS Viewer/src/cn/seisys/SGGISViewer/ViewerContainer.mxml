@@ -7,13 +7,25 @@
 		 initialize="initializeHandler(event)">
 	<fx:Script>
 		<![CDATA[
+			import mx.core.FlexGlobals;
 			import mx.events.FlexEvent;
 			
 			import cn.seisys.SGGISViewer.managers.ConfigManager;
+			import cn.seisys.SGGISViewer.managers.MapManager;
 			
 			private static var m_instance:ViewerContainer;
 			
+			public static const DEFAULT_CONFIG_FILE:String = "config.xml";
+			
+			public static const CONTAINER_INITIALIZED:String = "containerInitilized";
+			
+			public static var configFile:String = ViewerContainer.DEFAULT_CONFIG_FILE;
+			
+			public static var urlConfigParams:Object = {}; 
+			
 			public var configManager:ConfigManager;
+			
+			public var mapManager:MapManager;
 			
 			public static function getInstance():ViewerContainer
 			{
@@ -22,13 +34,38 @@
 			
 			protected function creationCompleteHandler(event:FlexEvent):void
 			{
-				// TODO Auto-generated method stub
+				m_instance = this;
+				setConfigFile();
 				
+				AppEvent.addListener(AppEvent.CONFIG_LOADED, configLoadedHandler);
+				
+				AppEvent.dispatch(ViewerContainer.CONTAINER_INITIALIZED);
 			}
 			
 			protected function initializeHandler(event:FlexEvent):void
 			{
 				// TODO Auto-generated method stub
+				
+			}
+			
+			private function setConfigFile():void
+			{
+				//retrieve FlashVars.
+				var flashvarConfig:String = FlexGlobals.topLevelApplication.parameters.config;
+				if (flashvarConfig)
+				{
+					configFile = flashvarConfig;
+				}
+				
+				//retrieve config from URL and override FlashVar
+				if (urlConfigParams.config)
+				{
+					configFile = urlConfigParams.config;
+				}
+			}
+			
+			private function configLoadedHandler(event:AppEvent):void
+			{
 				
 			}
 			

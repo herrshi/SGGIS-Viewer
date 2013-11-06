@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
-				layout="absolute" 
-				minWidth="955" minHeight="600" 
-				xmlns:SGGISViewer="cn.seisys.SGGISViewer.*">
+<s:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+				xmlns:SGGISViewer="cn.seisys.SGGISViewer.*" 
+				xmlns:managers="cn.seisys.SGGISViewer.managers.*" 
+				xmlns:s="library://ns.adobe.com/flex/spark">
 	
-	<SGGISViewer:ViewerContainer>
+	<SGGISViewer:ViewerContainer id="viewerContainer">
+		<SGGISViewer:configManager>
+			<managers:ConfigManager id="configManager"/>
+		</SGGISViewer:configManager>
 		
+		<!--<SGGISViewer:mapManager>
+			<managers:MapManager id="mapManager"/>
+		</SGGISViewer:mapManager>-->
 	</SGGISViewer:ViewerContainer>
-</mx:Application>
+</s:Application>

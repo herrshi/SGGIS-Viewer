@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					  xmlns:s="library://ns.adobe.com/flex/spark" 
+					  xmlns:mx="library://ns.adobe.com/flex/mx" 
+					  width="100%" height="100%" 
+					  creationComplete="creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import cn.seisys.SGGISViewer.AppEvent;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+				AppEvent.addListener( AppEvent.CONFIG_LOADED, configLoadedHandler );
+			}
+			
+			private function configLoadedHandler( event:AppEvent ):void
+			{
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:Label text="map" fontSize="20"/>
+</s:SkinnableContainer>
