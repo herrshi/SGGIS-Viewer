@@ -3,7 +3,6 @@
 	<style>
 		<!--textColor,backgroundColor,rolloverColor,selectionColor,titleColor -->
 		<colors>0x000000,0xFFFFFF,0xDDDDDD,0x3E6FBC,0x3E6FBC</colors>
-		<navigationcolors>0xFFFFFF,0x3E6FBC,0xDDDDDD,0x3E6FBC,0xFFFFFF</navigationcolors>
 		<alpha>0.8</alpha>
 		<font name="微软雅黑" size="14" />
 	</style>
